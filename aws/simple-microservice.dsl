@@ -14,7 +14,7 @@ workspace "Amazon Example" "Simple microservices architecture on AWS" {
             dataStore = container "Data Store" "Contains all Datastore components" {
                 tags = "Datastore"
             }
-            amazonAurora = container "Relational Data Store" "Amazon Aurora RDS instance" {
+            amazonAurora = container "Amazon Aurora" "Amazon Aurora RDS instance" {
                 tags = "Amazon Web Services - RDS Amazon Aurora instance"
             }
         }
@@ -53,10 +53,14 @@ workspace "Amazon Example" "Simple microservices architecture on AWS" {
                         description "Amazon Aurora RDS instance"
                         tags "Amazon Web Services - ElastiCache For Redis"
                     }
+                    /*
                     aurora = infrastructureNode "Amazon Aurora" {
                         description "Amazon Aurora RDS instance"
                         tags "Amazon Web Services - RDS Amazon Aurora instance"
                     }
+                    */
+                    aurora = containerInstance amazonAurora
+                    
                     dynamodb = infrastructureNode "Amazon DynamoDB" {
                         description "Amazon DynamoDB datastore"
                         tags "Amazon Web Services - DynamoDB"
